@@ -36,8 +36,11 @@ while run:
     if keys[pygame.K_DOWN] and y < win_height - radius - vel:
         y += vel
 
-    if keys[pygame.K_SPACE] and radius == 40:
+    if keys[pygame.K_SPACE] and radius > 10:
         radius -= 10
+
+    if keys[pygame.K_g] and radius < 100:
+        radius += 10
 
 
     win.fill((0,0,0))  # Fills the screen with black
