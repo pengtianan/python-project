@@ -3,7 +3,10 @@
 import pygame
 pygame.init()
 
-win = pygame.display.set_mode((1920,1080))
+win_width = 1920
+win_height = 1080
+
+win = pygame.display.set_mode((win_width,win_height))
 pygame.display.set_caption("First Game")
 
 x = 50
@@ -21,17 +24,16 @@ while run:
             run = False
 
     keys = pygame.key.get_pressed()
-
-    if keys[pygame.K_LEFT]:
+    if keys[pygame.K_LEFT] and x > vel+radius:  # Making sure the top left position of our character is greater than our vel so we never move off the screen.
         x -= vel
 
-    if keys[pygame.K_RIGHT]:
+    if keys[pygame.K_RIGHT] and x < win_width - vel - radius:  # Making sure the top right corner of our character is less than the screen width - its width
         x += vel
 
-    if keys[pygame.K_UP]:
+    if keys[pygame.K_UP] and y > vel + radius:  # Same principles apply for the y coordinate
         y -= vel
 
-    if keys[pygame.K_DOWN]:
+    if keys[pygame.K_DOWN] and y < win_height - radius - vel:
         y += vel
 
     if keys[pygame.K_SPACE] and radius == 40:
